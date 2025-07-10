@@ -1,7 +1,9 @@
-import Navbar from "../components/Navbar";
+import { useContext } from "react";
 import Link from "next/link";
+import { appContext } from "../lib/store";
 
 export default function Home() {
+ const {tab, setTab} = useContext(appContext);
   return (
    <div className="bg-[#1B2127] h-screen w-screen overflow-auto">
     <img src="/rays.png" className="fixed hidden md:block z-3 top-[-100px] start-0 w-[80%] opacity-25 drop-shadow-lg hover:opacity-50 transition-opacity duration-2000" alt="" />
@@ -34,10 +36,10 @@ export default function Home() {
         }} className="text-md text-center mt-1">This is your space to reconnect — with the earth and with yourself.</p>
             <div className="flex justify-center gap-2 mt-3">
               <Link href={'/about'}>
-                <button className="btn relative z-6 text-white bg-gradient-to-r from-[#30756B] to-[#175446] hover:shadow-lg transition-transform duration-200 hover:scale-105">Expore More</button>
+                <button onClick={()=>setTab('About')} className="btn relative z-6 text-white bg-gradient-to-r from-[#30756B] to-[#175446] hover:shadow-lg transition-transform duration-200 hover:scale-105">Expore More</button>
               </Link>
               <Link href={'/services'}>
-                              <button className="btn text-white bg-gradient-to-r from-[#30756B] to-[#175446] hover:shadow-lg transition-transform duration-200 hover:scale-105">Get Cured</button>
+                              <button onClick={()=>setTab('Services')} className="btn text-white bg-gradient-to-r from-[#30756B] to-[#175446] hover:shadow-lg transition-transform duration-200 hover:scale-105">Get Cured</button>
               </Link>
             </div>
           </div> 
